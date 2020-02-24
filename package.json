@@ -1,14 +1,17 @@
 {
-  "name": "webpack-sass-bootstrap",
-  "version": "1.0.2",
-  "description": "Webpack-Sass-Bootstrap Boilerplate",
+  "name": "veeam-software-test-task",
+  "version": "1.0.0",
+  "description": "Veeam Software Test Task",
   "main": "index.js",
   "scripts": {
     "build": "webpack  --mode=production",
     "watch": "webpack --progress --watch  --mode=development",
-    "start": "webpack-dev-server --open  --mode=development"
+    "start": "webpack-dev-server --open  --mode=development",
+    "lint": "npm run lint-js && npm run lint-scss",
+    "lint-js": "eslint -c=.eslintrc.js --fix ./src/**/*.js",
+    "lint-scss": "stylelint --syntax scss ./**/*.scss"
   },
-  "author": "Shamin Meerankutty",
+  "author": "Melnikov Valery",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -16,11 +19,15 @@
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^0.1.19",
-    "compression-webpack-plugin": "^2.0.0",
+    "compression-webpack-plugin": "^3.1.0",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^1.0.1",
+    "eslint": "^6.8.0",
     "file-loader": "^2.0.0",
     "html-srcsets-loader": "^0.5.1",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
     "mini-css-extract-plugin": "^0.4.5",
     "node-glob": "^1.2.0",
     "node-sass": "^4.13.1",
@@ -29,25 +36,36 @@
     "precss": "^4.0.0",
     "sass-loader": "^7.3.1",
     "style-loader": "^0.23.1",
+    "stylelint": "^13.2.0",
+    "stylelint-scss": "^3.14.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
-    "popper.js": "^1.16.1"
-  },
-  "directories": {
-    "doc": "docs"
+    "lodash": "^4.17.15"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shaminmeerankutty/webpack-sass-bootstrap-boilerplate.git"
+    "url": "https://github.com/KelvinOm/veeam"
   },
-  "bugs": {
-    "url": "https://github.com/shaminmeerankutty/webpack-sass-bootstrap-boilerplate/issues"
+  "homepage": "",
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "**/*.scss": [
+      "stylefmt",
+      "stylelint --syntax scss",
+      "git add"
+    ]
   },
-  "homepage": "https://github.com/shaminmeerankutty/webpack-sass-bootstrap-boilerplate#readme"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }

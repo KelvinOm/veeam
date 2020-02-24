@@ -1,0 +1,31 @@
+@import "variables";
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background: #e5e5e5;
+  margin: 0;
+  font-family: $font-family;
+  min-width: 420px;
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

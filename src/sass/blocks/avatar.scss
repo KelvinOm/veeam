@@ -1,0 +1,43 @@
+.avatar {
+  position: relative;
+  display: flex;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar--default {
+  border: rgba(0, 0, 0, 0.5) 4px solid;
+}
+
+.avatar--default .avatar__image {
+  height: 64px;
+  width: 64px;
+}
+
+.avatar:before,
+.avatar:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+
+.avatar:hover:before {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.avatar:hover:after {
+  z-index: 2;
+  background: url("../img/ic_edit.svg") no-repeat center center;
+  display: block;
+}

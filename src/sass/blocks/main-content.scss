@@ -1,0 +1,14 @@
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px;
+  max-width: 1275px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1280px) {
+  .section:last-of-type {
+    margin-left: auto;
+  }
+}

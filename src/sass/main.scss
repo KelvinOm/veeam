@@ -1,10 +1,10 @@
-@import "~bootstrap/scss/bootstrap";
-
 @import "fonts";
 @import "variables";
+@import "scaffolding";
 @import "blocks/visually-hidden";
 @import "blocks/tabs";
-
-body {
-  background: #fff;
-}
+@import "blocks/avatar";
+@import "blocks/section";
+@import "blocks/navigation";
+@import "blocks/main-nav";
+@import "blocks/main-content";

@@ -1,19 +1,20 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const webpack = require("webpack");
-const path = require("path");
-const globSync = require("glob").sync;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const globSync = require('glob').sync;
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => ({
-  entry: ["./src/index.js"],
+  entry: ['./src/index.js'],
   devServer: {
-    contentBase: "./dist"
+    contentBase: './dist'
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   node: {
     fs: 'empty'
   },
@@ -22,19 +23,19 @@ module.exports = (env, options) => ({
       {
         test: /\.scss$/,
         use: [
-          options.mode !== "production"
-            ? "style-loader"
+          options.mode !== 'production'
+            ? 'style-loader'
             : {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
-                  publicPath: "../"
+                  publicPath: '../'
                 }
-              },
-          "css-loader",
+            },
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
-              plugins: function () {
+              plugins: function() {
                 return [
                   require('precss'),
                   require('autoprefixer')
@@ -42,17 +43,17 @@ module.exports = (env, options) => ({
               }
             }
           },
-          "sass-loader"
+          'sass-loader'
         ]
       },
       {
-        test: /\.(png|jpg|webp|gif|svg)$/,
+        test: /\.(png|jpg|webp|gif|svg|ico)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "img/"
+              name: '[name].[ext]',
+              outputPath: 'img/'
             }
           }
         ]
@@ -60,9 +61,9 @@ module.exports = (env, options) => ({
       {
         test: /\.(html)$/,
         use: {
-          loader: "html-srcsets-loader",
+          loader: 'html-srcsets-loader',
           options: {
-            attrs: [":src", ':srcset']
+            attrs: [':src', ':srcset']
           }
         }
       },
@@ -70,9 +71,9 @@ module.exports = (env, options) => ({
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"]
+            presets: ['@babel/preset-env']
           }
         }
       }
@@ -80,24 +81,24 @@ module.exports = (env, options) => ({
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash].css"
+      filename: 'css/[name].[contenthash].css'
     }),
-    new CleanWebpackPlugin(["dist"]),
-    ...globSync("src/**/*.html").map(fileName => {
+    new CleanWebpackPlugin(['dist']),
+    ...globSync('src/**/*.html').map(fileName => {
       return new HtmlWebpackPlugin({
         template: fileName,
-        inject: "body",
-        filename: fileName.replace("src/", "")
+        inject: 'body',
+        filename: fileName.replace('src/', '')
       });
     }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-      Popper: ["popper.js", "default"],
-      Util: "exports-loader?Util!bootstrap/js/dist/util",
-      Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
-    })
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
+    }),
+    new CopyPlugin([
+      { from: 'src/img', to: 'img' }
+    ])
   ],
   optimization: {
     minimizer: [
@@ -114,8 +115,8 @@ module.exports = (env, options) => ({
     ]
   },
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: ""
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: ''
   }
 });
