@@ -1,27 +1,47 @@
 import * as $ from 'jquery';
-import {getUserInfo} from './api-service';
-import {FRIENDS_LIST_URL} from './constants';
-import {appendFriendsList} from './user-friends-list';
+import { FRIENDS_LIST_URL, POSTS_URL, TABS } from './constants';
+import { appendFriends } from './friends-list';
+import { appendPostsList } from './posts';
+import { getUserInfo } from './api-service';
 
-export function tabsInit(selector, callBackFn) {
-  $(selector).on( 'click', event => {
+$('.tabs').on('click', event => {
+  let isLinkClicked = $(event.target).hasClass('tabs__btn');
+
+  if (isLinkClicked) {
     event.preventDefault();
+    tabsInit($(event.target).data('tab'));
+  }
+});
 
-    let queryParams = {
-            page: $(event.target).data('page')
-    };
+function tabsInit(currentTab = null) {
+  let tabContentsElems = $('.tabs__content').get();
+  let currentTabElem;
 
-    getUserInfo(FRIENDS_LIST_URL, queryParams, callBackFn);
+  switch (true) {
+    case currentTab === TABS.FRIENDS:
+      currentTabElem = $(`[data-tab=${TABS.FRIENDS}]`);
+      getUserInfo(FRIENDS_LIST_URL, {}, appendFriends);
+      break;
+    case currentTab === TABS.POSTS:
+      currentTabElem = $(`[data-tab=${TABS.POSTS}]`);
+      getUserInfo(POSTS_URL, {}, appendPostsList);
+      break;
+    default:
+      currentTab = TABS.FRIENDS;
+      currentTabElem = $(`[data-tab=${TABS.FRIENDS}]`);
+      getUserInfo(FRIENDS_LIST_URL, {}, appendFriends);
+  }
+
+
+  $('.tabs__btn--active').removeClass('tabs__btn--active');
+  $('.tabs__content--active').removeClass('tabs__content--active');
+  $(currentTabElem).addClass('tabs__btn--active');
+
+  tabContentsElems.forEach(tabContentElem => {
+    if ($(tabContentElem).data('tab-content') === currentTab) {
+      $(tabContentElem).addClass('tabs__content--active');
+    }
   });
 }
 
-$('.tabs').on( 'click', event => {
-  event.preventDefault();
-
-
-  // let queryParams = {
-  //     page: $(event.target).data('page')
-  // };
-  //
-  // getUserInfo(FRIENDS_LIST_URL, queryParams, appendFriendsList);
-});
+tabsInit();

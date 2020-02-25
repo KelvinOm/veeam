@@ -1,10 +1,7 @@
 import * as $ from 'jquery';
-import { getUserInfo } from './api-service';
-import { NOT_FOUND, FRIENDS_LIST_URL } from './constants';
+import { NOT_FOUND } from './constants';
 
-let currentFriends;
-
-function appendFriends(friends) {
+export function appendFriends(friends) {
   appendFriendsPagination(friends.total_pages);
   appendFriendsList(friends.data);
 }
@@ -22,12 +19,14 @@ export function appendFriendsList(friends) {
             </li>
         `;
   } else {
-    currentFriends = [...friends];
-
     friends.forEach(friend => {
       template += `
                 <li class="friends__item">
-                    <div class="friends__no-avatar"></div>
+                    <img class="friends__avatar"
+                         src="${friend.avatar}"
+                         width="125"
+                         height="125"
+                         alt="${friend.first_name} ${friend.last_name}">
                     <div class="friends__info">
                         <div>
                             ${friend.first_name}
@@ -50,39 +49,30 @@ export function appendFriendsList(friends) {
   friendsListElem.append($(template));
 }
 
-function appendFriendsPagination(totalPages) {
+export function appendFriendsPagination(totalPages) {
   let template = '';
   let friendsListElem = $('.friends__pagination');
 
   if (
     !totalPages
-        || totalPages === 0
-        || friendsListElem.children().length > 0
+    || totalPages === 0
+    || friendsListElem.children().length > 0
   ) return;
 
   for (let i = 1; i <= totalPages; i++) {
+    let paginationLinkClass = i === 1
+                              ? 'pagination-list__btn pagination-list__btn--active'
+                              : 'pagination-list__btn';
+
     template += `
-            <li class="pagination__item">
-                <a href="#" data-page="${i}">${i}</a>
+            <li class="pagination-list__item">
+                <button type="button"
+                   class="${paginationLinkClass}"
+                   data-page="${i}">${i}
+                </button>
             </li>
         `;
   }
 
   friendsListElem.append($(template));
 }
-
-let timerId;
-$('.filter-friends').on('change paste keyup', event => {
-  clearTimeout(timerId);
-  timerId = setTimeout(() => {
-    let fileterValue =  event.target.value;
-    let filteredFrends = currentFriends.filter(friend => {
-      return friend.first_name.includes(fileterValue)
-                || friend.last_name.includes(fileterValue)
-                || friend.email.includes(fileterValue);
-    });
-    appendFriendsList(filteredFrends);
-  }, 300);
-});
-
-getUserInfo(FRIENDS_LIST_URL, {}, appendFriends);

@@ -1,0 +1,34 @@
+@import "variables";
+
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.pagination-list__item {
+  &:not(:last-of-type) {
+    margin-right: 5px;
+  }
+}
+
+.pagination-list__btn {
+  font-size: 18px;
+  line-height: 160%;
+  color: #000000;
+  background-color: #ffffff;
+  border: none;
+  font-family: $font-family;
+  cursor: pointer;
+
+  &--active {
+    color: #ff0000;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: #ff0000;
+  }
+}

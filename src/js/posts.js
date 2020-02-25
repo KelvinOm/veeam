@@ -1,8 +1,7 @@
 import * as $ from 'jquery';
-import { getUserInfo } from './api-service';
-import { NOT_FOUND, POSTS_URL } from './constants';
+import { NOT_FOUND } from './constants';
 
-function appendPostsList(posts) {
+export function appendPostsList(posts) {
   let template = '';
   let postsListElem = $('.posts__list');
 
@@ -25,5 +24,3 @@ function appendPostsList(posts) {
 
   postsListElem.append($(template));
 }
-
-getUserInfo(POSTS_URL, {}, appendPostsList);

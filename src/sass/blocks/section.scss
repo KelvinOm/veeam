@@ -5,10 +5,7 @@
   display: flex;
   max-width: 810px;
   width: 100%;
-
-  &:not(:last-of-type) {
-    margin-bottom: 30px;
-  }
+  margin-bottom: 30px;
 
   &--top-left-corner-rounded {
     border-radius: 5px 0 0 0;
@@ -16,5 +13,9 @@
 
   &--top-right-corner-rounded {
     border-radius: 0 5px 0 0;
+  }
+
+  &--last {
+    margin-bottom: 0;
   }
 }

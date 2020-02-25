@@ -1,0 +1,25 @@
+.user-tabs {
+  flex-direction: column;
+  height: 100%;
+}
+
+.user-tabs .tabs {
+  margin: 0 -45px 0;
+}
+
+.user-tabs .tabs__list {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.user-tabs .filter-friends {
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+
+.user-tabs .posts {
+  margin: 0 -15px;
+}
+
+.user-tabs .custom-scroll {
+  padding-right: 45px;
+}

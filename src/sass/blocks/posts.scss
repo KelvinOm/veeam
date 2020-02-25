@@ -1,0 +1,28 @@
+@import "variables";
+
+.posts {
+  min-height: 433px;
+}
+
+.posts__item {
+  &:not(:last-of-type) {
+    margin-bottom: 30px;
+  }
+}
+
+.posts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.posts__title {
+  font-size: 24px;
+  line-height: 160%;
+  font-weight: $font-weight-medium;
+}
+
+.posts__description {
+  font-size: 16px;
+  line-height: 160%;
+}

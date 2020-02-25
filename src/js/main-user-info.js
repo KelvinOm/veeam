@@ -48,10 +48,29 @@ function appendMainUserInfo(userInfo) {
         `;
   } else {
     contactInfoTemplate = `
-            <div>${get(userInfo, 'name.title')} ${get(userInfo, 'name.first')} ${get(userInfo, 'name.last')}</div>
-            <div>email: ${userInfo.email}</div>
-            <div>phone: ${userInfo.phone}</div>
-            <div> ${get(userInfo, 'location.postcode')} ${get(userInfo, 'location.country')} ${get(userInfo, 'location.state')} ${get(userInfo, 'location.city')}</div>
+            <div>
+                ${get(userInfo, 'name.title')}
+                ${get(userInfo, 'name.first')}
+                ${get(userInfo, 'name.last')}
+             </div>
+            <div>
+                email: 
+                <a href="mailto:${userInfo.email}">
+                    ${userInfo.email}
+                </a>
+            </div>
+            <div>
+                phone:
+                <a href="tel:${userInfo.phone}">
+                    ${userInfo.phone}
+                </a>
+            </div>
+            <div>
+                ${get(userInfo, 'location.postcode')}
+                ${get(userInfo, 'location.country')}
+                ${get(userInfo, 'location.state')}
+                ${get(userInfo, 'location.city')}
+            </div>
         `;
   }
 
