@@ -6,7 +6,6 @@
   padding: 15px;
   max-width: 1275px;
   margin: 0 auto;
-  height: 100%;
 }
 
 .main-content__user-info {
@@ -16,4 +15,10 @@
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+@media (min-width: 1140px) {
+  .main-content {
+    height: 100%;
+  }
 }

@@ -2,7 +2,7 @@
   padding: 30px 45px;
   background: #ffffff;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
+  display: block;
   max-width: 810px;
   width: 100%;
   margin-bottom: 30px;
@@ -13,9 +13,5 @@
 
   &--top-right-corner-rounded {
     border-radius: 0 5px 0 0;
-  }
-
-  &--last {
-    margin-bottom: 0;
   }
 }

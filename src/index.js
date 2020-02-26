@@ -8,3 +8,4 @@ import './js/pagination';
 import './js/tabs';
 import './js/avatar-change';
 import './js/friends-filter';
+import './js/loader-service';

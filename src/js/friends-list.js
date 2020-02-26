@@ -10,6 +10,8 @@ export function appendFriendsList(friends) {
   let template = '';
   let friendsListElem = $('.friends__list');
 
+  $('.friends__item').remove();
+
   friendsListElem.empty();
 
   if (!Array.isArray(friends) || !friends) {

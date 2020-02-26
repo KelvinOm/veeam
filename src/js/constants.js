@@ -6,3 +6,4 @@ export const TABS = {
   FRIENDS: 'friends',
   POSTS: 'posts'
 };
+export const DEFAULT_DEBOUNCE_TIME = 300;

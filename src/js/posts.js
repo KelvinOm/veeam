@@ -5,6 +5,8 @@ export function appendPostsList(posts) {
   let template = '';
   let postsListElem = $('.posts__list');
 
+  $('.posts__item').remove();
+
   if (!Array.isArray(posts) || !posts) {
     template = `
             <li class="posts__item not-found">

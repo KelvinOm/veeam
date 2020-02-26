@@ -20,7 +20,7 @@
 
 .counters-list__link {
   display: block;
-  min-width: 180px;
+  min-width: 120px;
   height: 80px;
   padding: 15px;
   color: #000000;
@@ -46,4 +46,11 @@
 
 .counters-list__label {
   font-size: 12px;
+}
+
+@media (min-width: 610px) {
+  .counters-list__link {
+    display: block;
+    min-width: 180px;
+  }
 }

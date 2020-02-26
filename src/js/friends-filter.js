@@ -43,8 +43,8 @@ function friendsFilter(friends, filterValue) {
 
   let filteredFriends = friends.filter(friend => {
     return friend.first_name.includes(filterValue)
-      || friend.last_name.includes(filterValue)
-      || friend.email.includes(filterValue);
+           || friend.last_name.includes(filterValue)
+           || friend.email.includes(filterValue);
   });
 
   allFriends = [];

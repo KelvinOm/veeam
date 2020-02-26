@@ -1,13 +1,7 @@
 .user-tabs {
   flex-direction: column;
-  margin-bottom: 15px;
   padding-top: 15px;
-
-  &--posts-content {
-    height: 100%;
-    min-height: 0;
-    margin-bottom: 0;
-  }
+  margin-bottom: 0;
 }
 
 .user-tabs .tabs {
@@ -25,4 +19,18 @@
 
 .user-tabs .custom-scroll {
   padding-right: 45px;
+}
+
+@media (min-width: 1140px) {
+  .user-tabs {
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 15px 45px;
+
+    &--posts-content {
+      height: 100%;
+      min-height: 0;
+      margin-bottom: 0;
+    }
+  }
 }

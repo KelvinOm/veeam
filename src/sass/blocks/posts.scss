@@ -1,8 +1,8 @@
 @import "variables";
 
 .posts {
-  padding: 30px 30px 30px 45px;
-  min-height: 433px;
+  padding: 30px 30px 15px 45px;
+  max-height: 433px;
 }
 
 .posts__item {
@@ -26,4 +26,11 @@
 .posts__description {
   font-size: 16px;
   line-height: 160%;
+}
+
+@media (min-width: 1140px) {
+  .posts {
+    max-height: initial;
+    min-height: 433px;
+  }
 }
