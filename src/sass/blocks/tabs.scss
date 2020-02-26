@@ -1,23 +1,25 @@
 @import "variables";
 
 .tabs {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.tabs__list {
+.tabs__list-btn {
   list-style: none;
   margin: 0;
   display: flex;
-  overflow-y: auto;
+  flex-wrap: wrap;
   padding: 0 15px;
+  flex: 0;
 }
 
 .tabs__content {
   display: none;
   height: 100%;
+  min-height: 0;
   flex-direction: column;
-  padding: 15px 45px;
 
   &--active {
     display: flex;
@@ -30,7 +32,7 @@
   min-width: 140px;
   font-size: 16px;
   font-family: $font-family;
-  line-height: 80px;
+  height: 50px;
   text-align: center;
   white-space: nowrap;
   color: #000000;
@@ -48,6 +50,7 @@
   &--active {
     pointer-events: none;
     border-bottom: 4px solid #f1f1f1;
+    z-index: 1;
   }
 
   &:hover {

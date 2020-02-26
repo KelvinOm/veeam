@@ -7,4 +7,4 @@ import './js/constants';
 import './js/pagination';
 import './js/tabs';
 import './js/avatar-change';
-import './js/filter-friends';
+import './js/friends-filter';

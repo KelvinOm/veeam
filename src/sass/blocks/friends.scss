@@ -1,3 +1,37 @@
+.friends {
+  padding: 15px 45px 0;
+}
+
+.friends__filter {
+  position: relative;
+}
+
+.friends__input {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  width: 240px;
+  height: 30px;
+  padding: 0 15px;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.friends__label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  font-size: 16px;
+  line-height: 30px;
+  color: #c4c4c4;
+  cursor: text;
+}
+
+.friends__input:focus + .friends__label {
+  display: none;
+}
+
 .friends__list {
   list-style: none;
   margin: 0;

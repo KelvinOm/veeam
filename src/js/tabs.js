@@ -14,16 +14,17 @@ $('.tabs').on('click', event => {
 });
 
 function tabsInit(currentTab = null) {
-  let tabContentsElems = $('.tabs__content').get();
   let currentTabElem;
 
   switch (true) {
     case currentTab === TABS.FRIENDS:
       currentTabElem = $(`[data-tab=${TABS.FRIENDS}]`);
+      $('.user-tabs').removeClass('user-tabs--posts-content');
       getUserInfo(FRIENDS_LIST_URL, {}, appendFriends);
       break;
     case currentTab === TABS.POSTS:
       currentTabElem = $(`[data-tab=${TABS.POSTS}]`);
+      $('.user-tabs').addClass('user-tabs--posts-content');
       getUserInfo(POSTS_URL, {}, appendPostsList);
       break;
     default:
@@ -37,7 +38,7 @@ function tabsInit(currentTab = null) {
   $('.tabs__content--active').removeClass('tabs__content--active');
   $(currentTabElem).addClass('tabs__btn--active');
 
-  tabContentsElems.forEach(tabContentElem => {
+  $('.tabs__content').get().forEach(tabContentElem => {
     if ($(tabContentElem).data('tab-content') === currentTab) {
       $(tabContentElem).addClass('tabs__content--active');
     }

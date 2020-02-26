@@ -99,7 +99,7 @@
 
         <section class="section section--last user-tabs">
             <div class="tabs">
-                <ul class="tabs__list">
+                <ul class="tabs__list-btn">
                     <li class="tabs__item">
                         <button type="button"
                                 class="tabs__btn"
@@ -115,25 +115,25 @@
                         </button>
                     </li>
                 </ul>
-                <div class="tabs__content tabs__content--active"
+                <div class="tabs__content tabs__content--active friends"
                      data-tab-content="friends">
-                    <label class="filter-friends">
-                        <input class="filter-friends__input"
+                    <label class="friends__filter">
+                        <input class="friends__input"
                                type="text"
                                name="filter"
                            required>
-                        <span class="filter-friends__label">
+                        <span class="friends__label">
                             filter friends
                         </span>
                     </label>
-                    <div class="friends">
+                    <div class="friends__content">
                         <ul class="friends__list"></ul>
                         <ul class="friends__pagination pagination-list"></ul>
                     </div>
                 </div>
-                <div class="tabs__content"
+                <div class="tabs__content posts"
                      data-tab-content="posts">
-                    <div class="posts custom-scroll">
+                    <div class="posts__content custom-scroll">
                         <ul class="posts__list"></ul>
                     </div>
                 </div>

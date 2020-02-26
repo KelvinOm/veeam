@@ -8,7 +8,7 @@ let timerId;
 let allFriends = [];
 let filterValue;
 
-$('.filter-friends__input').on('change paste keyup', event => {
+$('.friends__input').on('change paste keyup', event => {
   let debounceTime = 300;
   clearTimeout(timerId);
 
@@ -32,11 +32,11 @@ function getFriends(friends = null) {
 
     getUserInfo(FRIENDS_LIST_URL, queryParams, getFriends);
   } else {
-    filterFriends(allFriends, filterValue);
+    friendsFilter(allFriends, filterValue);
   }
 }
 
-function filterFriends(friends, filterValue) {
+function friendsFilter(friends, filterValue) {
   if (!filterValue) {
     getUserInfo(FRIENDS_LIST_URL, {}, appendFriends);
   }
