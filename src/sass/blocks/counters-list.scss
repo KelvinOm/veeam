@@ -14,13 +14,13 @@
   text-align: center;
 
   &:not(:last-of-type) {
-    margin-right: 30px;
+    margin-right: 10px;
   }
 }
 
 .counters-list__link {
   display: block;
-  min-width: 120px;
+  min-width: 100px;
   height: 80px;
   padding: 15px;
   color: #000000;
@@ -49,6 +49,14 @@
 }
 
 @media (min-width: 610px) {
+  .counters-list__item {
+    text-align: center;
+
+    &:not(:last-of-type) {
+      margin-right: 30px;
+    }
+  }
+
   .counters-list__link {
     display: block;
     min-width: 180px;

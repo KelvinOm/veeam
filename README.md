@@ -1,3 +1,7 @@
+Link to build
+
+https://kelvinom.github.io/veeam/dist/
+
 Install all packages and dependencies required for this project:
 
     npm install
@@ -22,3 +26,7 @@ TODO
 * add csscomb
 * add html lint
 * add html minify
+* add html minify
+* improve filtering, but better replace to BE
+* improve a11y
+* add ccs loader
